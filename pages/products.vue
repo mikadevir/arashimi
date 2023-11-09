@@ -62,7 +62,7 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          <a href="https://s28.picofile.com/file/8466295442/%DA%A9%D8%A7%D8%AA%D8%A7%D9%84%D9%88%DA%AF_1401.pdf.html" target="_blank"> کاتالوگ</a>        </v-card-text>
+          <a href="https://arashimikimia.com/download/cataloug.pdf" target="_blank"> کاتالوگ</a>        </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
