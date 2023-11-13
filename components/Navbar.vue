@@ -9,8 +9,8 @@
         <v-toolbar-title><v-btn variant="plain" rounded :to="{ name:'index'}">درباره ما </v-btn></v-toolbar-title>
         <v-toolbar-title> <v-btn variant="plain" rounded :to="{ name: 'products'}">محصولات </v-btn></v-toolbar-title>
         <v-toolbar-title><v-btn variant="plain" rounded :to="{ name: 'contactus'}">ارتباط با ما</v-btn></v-toolbar-title>
-        <v-toolbar-title><v-btn   :to="{ name:'index' }">
-            <v-img src="/logo/arashlogo.jpg" width="115" height="57" />
+        <v-toolbar-title><v-btn variant="plain"  :to="{ name:'index' }">
+            <v-img src="/logo/logoarash.png" width="115" height="50" />
           </v-btn></v-toolbar-title>
         </v-col>
 
