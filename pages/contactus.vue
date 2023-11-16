@@ -1,24 +1,4 @@
 <template>
-  <!-- <v-card class="mx-auto my-12" max-width="374">
-
-
-    <v-img cover height="250" src="/images/map11.jpg"></v-img>
-
-    <v-card-item>
-      <v-card-title>تماس با ما</v-card-title>
-
-    </v-card-item>
-
-    <v-form @submit.prevent="submitForm">
-      
-      <v-text-field name="name" v-model="name" label="نام" class="ma-3"></v-text-field>
-      <v-text-field name="email" v-model="email" label="ایمیل" class="ma-3"></v-text-field>
-      <v-textarea name="message" v-model="message" label="پیام" class="ma-3"></v-textarea>
-      <div class=text-center>
-    <v-btn type="submit" color="success" class="my-2">ارسال</v-btn>
-      </div>
-  </v-form>
-  </v-card> -->
   <section class="book_section layout_padding">
         <div class="container">
             <div class="heading_container">
@@ -29,23 +9,24 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form_container">
-                        <form action="">
+                        <form class="form" ref="form" @submit.prevent="sendMail">
                             <div>
-                                <input type="text" class="form-control" placeholder="نام و نام خانوادگی" />
+                                <input name="from_name"  type="text" class="form-control" :value="inputFieldReset" placeholder="نام و نام خانوادگی" required />
                             </div>
                             <div>
-                                <input type="email" class="form-control" placeholder="ایمیل" />
+                                <input name="email"  type="email" class="form-control" :value="inputFieldReset" placeholder="ایمیل" required />
                             </div>
                             <div>
-                                <input type="text" class="form-control" placeholder="موضوع پیام" />
+                                <input name="subject"  type="text" class="form-control" :value="inputFieldReset" placeholder="موضوع پیام" required />
                             </div>
                             <div>
-                                <textarea rows="10" style="height: 100px" class="form-control"
+                                <textarea name="message"  rows="10" style="height: 100px" :value="inputFieldReset" class="form-control" required
                                     placeholder="متن پیام"></textarea>
                             </div>
                             <div class="btn_box">
-                                <button>
+                                <button class="submit" type="submit" name="send" >
                                     ارسال پیام
+                                    <div v-if="loading" class="spinner-border spinner-border-sm ms-2"></div>
                                 </button>
                             </div>
                         </form>
@@ -124,7 +105,30 @@
 </template>
 
 <script setup>
+ import { useToast } from "vue-toastification";
+import emailjs from '@emailjs/browser';
+import {ref} from 'vue';
+
 const { $leaflet } = useNuxtApp();
+const form = ref(null);
+const inputFieldReset = ref(null);
+const loading = ref(false);
+const toast = useToast();
+
+const sendMail = () => {
+    
+        loading.value =true;
+        emailjs.sendForm('service_fbqo7dw', 'template_8l87wy7', form.value, 'HQScrU4x3F6MxEf9e')
+        .then(() => {
+          toast.success("پیام شما با موفقیت ثبت شد")
+          inputFieldReset.value = " ";
+        }, (error) => {
+          alert('Message not sent', error);
+        }) 
+        .finally(()=>{
+            loading.value = false
+        })
+      }
 
 onMounted(() => {
   var map = $leaflet.map("map").setView([35.7245261, 51.4296521], 20.5);
@@ -142,33 +146,4 @@ onMounted(() => {
     .bindPopup("AraShimiKimia")
     .openPopup();
 });
-
-// const FORMSPARK_ACTION_URL = "https://submit-form.com/Fiyrjk69";
-
-// export default {
-//   data() {
-//     return {
-//       name: "",
-//       email: "",
-//       message: "",
-//     };
-//   },
-//   methods: {
-//     async submitForm() {
-//       await fetch(FORMSPARK_ACTION_URL, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Accept: "application/json",
-//         },
-//         body: JSON.stringify({
-//           message: this.name,
-//           message: this.email,
-//           message: this.message,
-//         }),
-//       });
-//       alert("Form submitted");
-//     },
-//   },
-// };
 </script>
