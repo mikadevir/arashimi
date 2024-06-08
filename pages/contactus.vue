@@ -1,14 +1,94 @@
 <template>
-  <section class="book_section layout_padding">
+  <section class="book_section layout_padding-top .layout_padding2-bottom">
         <div class="container">
-            <div class="heading_container">
+            <!-- <div class="heading_container">
+                <h2>
+                    تماس با ما
+                </h2>
+            </div> -->
+            <div class="row">
+                <div  class="col-md-3 col-sm-6 col-xs-6">
+                    
+                    <ul class="list-unstyled mb-0">
+                        <li><i class="bi bi-geo-alt-fill"></i>
+                            <p class="text-mdAndUp-h4 text-xs-h6">دفتر شرکت آرا شیمی کیمیا</p>
+                            <p class="text-mdAndUp-h4 text-xs-h6"> تهران-خیابان شهید مطهری ساختمان 161 </p>
+                        </li>
+        
+                        <li><i class="bi bi-telephone-fill"></i>
+                            <p> 021-86031772 ، 021-86031775 </p>
+                        </li>
+                
+                        <li><i class="bi bi-printer-fill"></i>
+                            <p>021-86031778</p>
+                        </li>
+
+                        <li><i class="bi bi-mailbox"></i>
+                            <p>کد پستی: 1576638655</p>
+                        </li>
+
+
+                        <li>
+                            <br>
+                            <p>Hr@arachemco.com</p>
+                        </li>
+                        
+                    </ul>
+                
+                
+                
+                        </div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                    
+            <div style="font-family:arial; direction:ltr">
+                <ul class="list-unstyled mb-0">
+                <li><i class="bi bi-geo-alt-fill"></i>
+                    <p class="text-mdAndUp-h4">ARA CHEM Co.</p>
+                      <p class="text-mdAndUp-h4">  6th floor, No 161, Motahari St, Tehran</p>
+                </li>
+
+                <li><i class="bi bi-telephone-fill"></i>
+                    <p> 021-86031772 , 021-86031775 </p>
+                </li>
+                <li><i class="bi bi-printer-fill"></i>
+                            <p>021-86031778</p>
+                        </li>
+
+                <li><i class="bi bi-mailbox"></i>
+                    <p>Postal Code: 1576638655</p>
+                </li>
+                <li><i class="bi bi-envelope-fill"></i>
+                    <p>Info@arachemco.com
+                    </p>
+                </li>
+            </ul>
+            </div>
+        
+        
+        
+                </div>
+                <div class="col-md-6">
+                    <div class="map_container ">
+                        <div id="map" style="height: 345px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--abouuuuuuuuuuuuut  -->
+
+    <section class="book_section  ">
+        <div class="container ">
+            <div class="heading_container align-center justify-center">
                 <h2>
                     تماس با ما
                 </h2>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form_container">
+            <div class="row align-center justify-center">
+                
+                <div class="col-md-4 ">
+                    <div class="form_container ">
                         <form class="form" ref="form" @submit.prevent="sendMail">
                             <div>
                                 <input name="from_name"  type="text" class="form-control" :value="inputFieldReset" placeholder="نام و نام خانوادگی" required />
@@ -32,73 +112,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="map_container ">
-                        <div id="map" style="height: 345px;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--abouuuuuuuuuuuuut  -->
-
-  <section class="about_section layout_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    
-            <ul class="list-unstyled mb-0">
-                <li><i class="bi bi-geo-alt-fill"></i>
-                    <p><h3>دفتر شرکت آرا شیمی کیمیا</h3><br>
-                        تهران-خیابان مطهری ساختمان 161 
-                    </p>
-                </li>
-
-                <li><i class="bi bi-telephone-fill"></i>
-                    <p> 021-86031772 <br>
-                        021-86031779 <br>
-                        021-86031779
-                    </p>
-                </li>
-
-                <li><i class="bi bi-printer-fill"></i>
-                    <p>021-86031779</p>
-                </li>
-            </ul>
-        
-        
-        
-                </div>
-                <div class="col-md-6">
-                    
-            <div style="font-family:arial; direction:ltr">
-                <ul class="list-unstyled mb-0">
-                <li><i class="bi bi-geo-alt-fill"></i>
-                    <p><h3>ARA CHEM Co.</h3>
-                        6th floor, No 161, Motahari St, Tehran 
-                    </p>
-                </li>
-
-                <li><i class="bi bi-telephone-fill"></i>
-                    <p> 021-86031772
-                    </p>
-                </li>
-
-                <li><i class="bi bi-mailbox"></i>
-                    <p>Postal Code: 1576638655</p>
-                </li>
-                <li><i class="bi bi-envelope-fill"></i>
-                    <p>Info@arachemco.com <br>
-                        Hr@arachemco.com
-                    </p>
-                </li>
-            </ul>
-            </div>
-        
-        
-        
-                </div>
+                
             </div>
         </div>
     </section>
@@ -129,21 +143,44 @@ const sendMail = () => {
             loading.value = false
         })
       }
-
 onMounted(() => {
-  var map = $leaflet.map("map").setView([35.7245261, 51.4296521], 20.5);
+    let map = $leaflet.map('map').setView([35.7245261, 51.4296521], 20.5);
 
-  $leaflet
-    .tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    })
-    .addTo(map);
+    let tiles = $leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+    }).addTo(map);
 
-  $leaflet
-    .marker([35.7245261, 51.4296521])
-    .addTo(map)
-    .bindPopup("AraShimiKimia")
-    .openPopup();
-});
+    let marker = $leaflet.marker([35.7245261, 51.4296521], {
+        icon: $leaflet.icon({
+            popupAnchor: [0, -30],
+            iconSize: [24, 36],
+            iconAnchor: [12, 36],
+            iconUrl: 'images/map/marker-icon.png',
+            shadowUrl: 'images/map/marker-shadow.png'
+        })
+    }).addTo(map)
+        .bindPopup('<b>Arashimikimia</b>').openPopup();
+})
+// onMounted(() => {
+//   let map = $leaflet.map("map").setView([35.7245261, 51.4296521], 20.5);
+
+//   $leaflet
+//     .tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//       attribution:
+//         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+//     })
+//     .addTo(map);
+
+//   $leaflet
+//     .marker([35.7245261, 51.4296521],20.5 , {
+//         icon: $leaflet.icon({
+//             popupAnchor: [12, 6],
+//             iconUrl: 'images/map/marker-icon.png',
+//             shadowUrl: 'images/map/marker-shadow.png'
+//         })
+//     })
+//     .addTo(map)
+//     .bindPopup("AraShimiKimia")
+//     .openPopup();
+// });
 </script>

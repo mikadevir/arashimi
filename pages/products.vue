@@ -33,15 +33,13 @@
       cover
     ></v-img>
 
-    <v-card-title>
-      کاتالوگ محصولات
-    </v-card-title>
+    <v-card-text class="text-center">
+          <nuxt-link to="https://arashimikimia.com/download/cataloug.pdf">کاتالوگ</nuxt-link>     
+    </v-card-text>
 
-    <v-card-subtitle>
-       با اسکن کردن بارکد بالا می توانید کاتالوگ <br>محصولات را مشاهده نمایید و یا از لینک زیر<br> دریافت نمایید.
-    </v-card-subtitle>
+    
 
-    <v-card-actions>
+    <!-- <v-card-actions>
       <v-btn
         color="orange-lighten-2"
         variant="text"
@@ -55,16 +53,15 @@
         :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
         @click="show = !show"
       ></v-btn>
-    </v-card-actions>
+    </v-card-actions> -->
 
-    <v-expand-transition>
+    <!-- <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
 
-        <v-card-text>
-          <a href="https://arashimikimia.com/download/cataloug.pdf" target="_blank"> کاتالوگ</a>        </v-card-text>
+        
       </div>
-    </v-expand-transition>
+    </v-expand-transition> -->
   </v-card>
           </v-col>
           <!--<v-col v-for="item in filteredProducts" :key="item.id"  cols="6" sm="4" md="3">
